@@ -55,7 +55,7 @@ patch("/actors/:id") do
   actor_id = params.fetch("id").to_i()
   @actor = Actor.find(actor_id)
   movie_ids = params.fetch("movie_ids")
-  @actor.update({movie_ids => movie_ids})
+  @actor.update({:movie_ids => movie_ids})
   @movies=Movie.all()
   erb(:actor_info)
 end
