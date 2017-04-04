@@ -31,6 +31,26 @@ post("/actors") do
   erb(:actors)
 end
 
+get("/actors/:id/edit") do
+  @actor = Actor.find(params.fetch("id").to_i())
+  erb(:actor_edit)
+end
+
+patch("/actors/:id/edit") do
+  name = params.fetch("name")
+  @actor = Actor.find(params.fetch("id").to_i())
+  @actor.update({:name => name})
+  @actors = Actor.all()
+  erb(:actors)
+end
+
+delete("/actors/:id/delete") do
+  @actor = Actor.find(params.fetch("id").to_i())
+  @actor.delete()
+  @actors = Actor.all()
+  erb(:actors)
+end
+
 post("/movies") do
   name = params.fetch("name")
   movie = Movie.new({:name => name, :id => nil})
@@ -38,6 +58,27 @@ post("/movies") do
   @movies = Movie.all()
   erb(:movies)
 end
+
+get("/movies/:id/edit") do
+  @movie = Movie.find(params.fetch("id").to_i())
+  erb(:movie_edit)
+end
+
+patch("/movies/:id/edit") do
+  name = params.fetch("name")
+  @movie = Movie.find(params.fetch("id").to_i())
+  @movie.update({:name => name})
+  @movies = Movie.all()
+  erb(:movies)
+end
+
+delete("/movies/:id/delete") do
+  @movie = Movie.find(params.fetch("id").to_i())
+  @movie.delete()
+  @movies = Movie.all()
+  erb(:movies)
+end
+
 
 get("/actors/:id") do
   @actor = Actor.find(params.fetch("id").to_i())

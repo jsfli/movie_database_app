@@ -1,0 +1,15 @@
+<h1>Update <%=@movie.name()%></h1>
+
+<form action="/movies/<%=@movie.id%>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="name">Rename your movie:</label>
+  <input type="text" name="name" id="name">
+
+  <button type="submit">Update</button>
+</form>
+
+<form action="/movies/<%=@movie.id%>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Delete movie</button>
+</form>

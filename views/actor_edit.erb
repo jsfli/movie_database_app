@@ -1,0 +1,16 @@
+<h1>Update <%=@actor.name()%></h1>
+
+<form action="/actors/<%=@actor.id%>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="name">Rename your actor:</label>
+  <input type="text" name="name" id="name">
+
+  <button type="submit">Update</button>
+</form>
+
+
+<form action="/actors/<%=@actor.id%>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Delete actor</button>
+</form>
